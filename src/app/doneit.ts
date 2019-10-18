@@ -1,4 +1,7 @@
+import { Status } from './status';
+
 export interface Doneit {
-    time: string;
+    datetime: string;
     title: string;
+    status: Status;
 }

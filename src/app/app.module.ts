@@ -1,24 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {IdbService} from './services/idb.service';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+/*
+const config: DexieConfig = {
+  databaseName: 'DoneIt',
+  schema: {
+            entries: '++id,title,datetime'
+          }
+};
+*/
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    // DexieModule.forRoot(config),
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [IdbService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

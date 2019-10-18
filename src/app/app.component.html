@@ -1,16 +1,18 @@
 <div class="fixed-bottom">
   <div class="card">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio<br />
-        <small style="color: cadetblue;">#köket</small>
+
+      <li class="list-group-item" *ngFor="let do of this.doit">
+          <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" (change)="toggleStatus(do.id)" [checked]="do.status === 2">  {{ do.title }}<br />
+          <small style="color: cadetblue;">#köket</small>
+        </div>
       </li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li><span></span>
     </ul>
   </div>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
    
-      <input type="text" class="form-control" id="doit" placeholder="What to do!">
+      <input type="text" class="form-control" [formControl]="titleInput" id="doit" placeholder="What to do!">
       <button type="button"  (click)="addNewItem()" [disabled]="titleInput.errors">Add</button>
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
